@@ -9527,3 +9527,24 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
+
+.car-preview {
+  width: 50%;
+}
+
+
+.btn-delete {
+  position: absolute;
+  top: 0;
+  right: 3%;
+  background: #fff;
+  padding: 10px;
+  font-weight: 700;
+  color: #f44336c4;
+  cursor: pointer;
+  border-bottom-left-radius: 4px;
+}
+
+.btn-delete:hover {
+  color: #f44336;
+}

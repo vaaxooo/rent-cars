@@ -16,4 +16,8 @@ class Category extends Model
         'url',
     ];
 
+    public function cars() {
+        return $this->hasMany(Car::class, 'category_id');
+    }
+
 }

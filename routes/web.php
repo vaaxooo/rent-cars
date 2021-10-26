@@ -38,6 +38,10 @@ Route::group(['prefix' => 'admin'], function () {
             '\App\Http\Controllers\Admin\Rent\CarController@edit')->name('admin.rent.cars.edit');
         Route::post('/rent/cars/{car}/edit',
             '\App\Http\Controllers\Admin\Rent\CarController@edit')->name('admin.rent.cars.edit');
+        Route::get('/rent/cars/{car}/remove-image',
+            '\App\Http\Controllers\Admin\Rent\CarController@removeImage')->name('admin.rent.cars.remove_image');
+        Route::get('/rent/cars/{car}/delete',
+            '\App\Http\Controllers\Admin\Rent\CarController@destroy')->name('admin.rent.cars.delete');
 
         Route::get('/categories',
             '\App\Http\Controllers\Admin\Categories\CategoryController@index')->name('admin.categories');
