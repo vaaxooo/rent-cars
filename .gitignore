@@ -13,5 +13,5 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
-/public/static/gallery/*
-/public/static/preview/
+/public/static/gallery
+/public/static/previews
