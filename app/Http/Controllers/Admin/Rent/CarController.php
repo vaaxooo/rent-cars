@@ -68,6 +68,7 @@ class CarController extends Controller
             'width' => 'required|numeric',
             'maximum_speed' => 'required|numeric',
             'height' => 'required|numeric',
+            'trunk' => 'required|numeric',
             'power' => 'required|numeric',
             'engine_volume' => 'required|numeric',
             'acceleration_time' => 'required|string',
@@ -122,6 +123,7 @@ class CarController extends Controller
                 $carData->update(array_merge($req->validated(), [
                     'preview' => $preview,
                     'gallery' => json_encode($request->gallery),
+                    'url' => str_slug($request->brand),
                     'rate_without_driver' => json_encode($request->rate_without_driver),
                     'car_with_driver' => isset($request->car_with_driver) && $request->car_with_driver == "true" ? 1 : 0,
                     'car_without_driver' => isset($request->car_without_driver) && $request->car_without_driver == "true" ? 1 : 0,
@@ -136,6 +138,7 @@ class CarController extends Controller
             $car = Car::create(array_merge($req->validated(), [
                 'preview' => $preview,
                 'gallery' => json_encode($request->gallery),
+                'url' => str_slug($request->brand),
                 'rate_without_driver' => json_encode($request->rate_without_driver),
                 'car_with_driver' => isset($request->car_with_driver) && $request->car_with_driver == "true" ? 1 : 0,
                 'car_without_driver' => isset($request->car_without_driver) && $request->car_without_driver == "true" ? 1 : 0,

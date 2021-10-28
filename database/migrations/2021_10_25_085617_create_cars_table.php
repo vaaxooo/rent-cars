@@ -18,6 +18,7 @@ class CreateCarsTable extends Migration
             $table->string('category_id');
             $table->string('brand');
             $table->string('brand_en');
+            $table->string('url');
             $table->integer('year');
             $table->boolean('car_with_driver')->default(true);
             $table->boolean('car_without_driver')->default(false);
@@ -28,6 +29,7 @@ class CreateCarsTable extends Migration
             $table->integer('maximum_speed');
             $table->integer('height');
             $table->integer('power');
+            $table->integer('trunk');
             $table->integer('engine_volume');
             $table->integer('acceleration_time');
             $table->binary('peculiarities');

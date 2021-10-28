@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 
+Route::get('/sitemap.xml',
+    'App\Http\Controllers\Landing\AppController@sitemap')->name('landing.sitemap');
 /*
  * ADMIN ROUTES
  * */
@@ -28,6 +30,12 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/', function () {
             return view('admin.index');
         })->name('admin.index');
+
+        Route::get('/orders', '\App\Http\Controllers\Admin\AppController@orders')->name('admin.orders');
+        Route::get('/orders/{order}/delete', '\App\Http\Controllers\Admin\AppController@ordersDelete')->name('admin.orders.delete');
+        Route::get('/back-calls', '\App\Http\Controllers\Admin\AppController@calls')->name('admin.calls');
+        Route::get('/calls/{call}/delete', '\App\Http\Controllers\Admin\AppController@callsDelete')->name('admin.calls.delete');
+
 
         Route::get('/rent/cars', '\App\Http\Controllers\Admin\Rent\CarController@index')->name('admin.rent.cars');
         Route::get('/rent/cars/add',
@@ -61,3 +69,25 @@ Route::group(['prefix' => 'admin'], function () {
 /**
  * END ADMIN ROUTES
  */
+
+
+Route::group(['middleware' => ['web']], function () {
+
+    Route::get('/', '\App\Http\Controllers\Landing\AppController@index')->name('landing.index');
+    Route::get('/thanks', '\App\Http\Controllers\Landing\AppController@thanks')->name('landing.thanks');
+    Route::get('/{car_url?}', '\App\Http\Controllers\Landing\AppController@car')->name('landing.car');
+
+});
+
+
+Route::get('/language-change/{locale}',
+    'App\Http\Controllers\Landing\AppController@languageChange')->name('language.change');
+
+
+/**
+ * CALLS
+ */
+Route::post('/form/call',
+    'App\Http\Controllers\Landing\AppController@backCall')->name('landing.form.call');
+Route::post('/form/order',
+    'App\Http\Controllers\Landing\AppController@order')->name('landing.form.order');

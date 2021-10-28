@@ -59,7 +59,11 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">База заказов</a>
+                <a class="nav-link" href="{{ route('admin.orders') }}">Заказы и расчёты</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.calls') }}">Обратные звонки</a>
             </li>
         </ul>
     </div>
