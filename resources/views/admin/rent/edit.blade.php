@@ -283,7 +283,7 @@
                                     <label>Цена без водителя:</label>
                                     <div class="multigroup" id="multigroup_rates">
                                         @foreach(json_decode($car->rate_without_driver) as $key => $rate)
-                                            <div class="form-group @if($key > 0) border-top @endif">
+                                            <div class="form-group @if($key > 0) border-top @endif" @if($key > 0) id="mgr-{{ $key }}" @endif>
                                                 <div class="form-group mt-1">
                                                     <label>Количество суток:</label>
                                                     <input type="text" class="form-control form-control-lg" id="rate_without_driver" name="rate_without_driver[][days]"
@@ -296,7 +296,7 @@
                                                 </div>
                                                 @if($key > 0)
                                                     <div class="form-group">
-                                                        <button type="button" class="btn btn-white text-danger btn-sm fw-bold" id="delete_multigroup_rates">Удалить
+                                                        <button type="button" class="btn btn-white text-danger btn-sm fw-bold" onclick="removeMultiGroupBlock('#mgr-{{ $key }}')">Удалить
                                                             блок
                                                         </button>
                                                     </div>
@@ -329,6 +329,12 @@
                                 <input type="text" class="form-control form-control-lg" placeholder="Введите теги страницы.." id="seo_tags" name="seo_tags" value="{{ $car->seo_tags }}">
                                 <span class="text-small text-muted"><b class="text-danger">*</b> Каждый новый тег через запятую.</span>
                             </div>
+                            <div class="form-group">
+                                <label for="seo_tags">URL-Адрес:</label>
+                                <input type="text" class="form-control form-control-lg" placeholder="Введите URL-адрес" id="url" name="url" value="{{ $car->url }}">
+                                <span class="text-small text-muted"><b class="text-danger">*</b> URL идёт в sitemap</span>
+                                <span class="text-small text-muted d-block"><b class="text-danger">*</b> Пример: testovyi-avtomobil</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -340,5 +346,11 @@
             <a href="{{ route('admin.rent.cars.delete', ['car' => $car->id]) }}" type="submit" class="btn btn-danger btn-lg">Удалить</a>
         </div>
     </form>
+
+    <script>
+            function removeMultiGroupBlock(block) {
+                $(block).remove();
+            }
+    </script>
 
 @endsection

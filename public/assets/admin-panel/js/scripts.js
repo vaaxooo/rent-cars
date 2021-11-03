@@ -10,7 +10,7 @@ $(document).ready(function () {
     $("#add_multigroup_gallery").click(function(){
         let countBlocks = $("#multigroup_rates>div").length;
         $("#multigroup_gallery").append(`
-        <div class="form-group border-top" id="multiblock">
+        <div class="form-group border-top" id="mgg-${countBlocks}">
             <label>Изображение:</label>
             <input type="file" class="form-control-file" id="gallery" name="gallery[${countBlocks}][image]">
 
@@ -20,7 +20,7 @@ $(document).ready(function () {
                        placeholder="Текст для SEO" id="gallery" name="gallery[${countBlocks}][seo_alt]" />
             </div>
             <div class="form-group">
-                <button type="button" class="btn btn-white text-danger btn-sm fw-bold" id="delete_multigroup_gallery">Удалить
+                <button type="button" class="btn btn-white text-danger btn-sm fw-bold" onclick="removeMultiGroupBlock('#mgg-${countBlocks}')">Удалить
                     блок
                 </button>
             </div>
@@ -29,15 +29,10 @@ $(document).ready(function () {
     });
 
 
-    $("#delete_multigroup_rates").click(function(){
-        $($(this).closest($(this).closest('div'))).remove()
-    });
-
-
     $("#add_multigroup_rates").click(function(){
         let countBlocks = $("#multigroup_rates>div").length;
         $("#multigroup_rates").append(`
-            <div class="form-group border-top">
+            <div class="form-group border-top" id="mgr-${countBlocks}">
                 <div class="form-group mt-1">
                     <label>Количество суток:</label>
                     <input type="text" class="form-control form-control-lg" id="rate_without_driver" name="rate_without_driver[${countBlocks}][days]"
@@ -49,7 +44,7 @@ $(document).ready(function () {
                            placeholder="Стоимость" id="rate_without_driver" name="rate_without_driver[${countBlocks}][price]"/>
                 </div>
                 <div class="form-group">
-                    <button type="button" class="btn btn-white text-danger btn-sm fw-bold" id="delete_multigroup_rates">Удалить
+                    <button type="button" class="btn btn-white text-danger btn-sm fw-bold" onclick="removeMultiGroupBlock('#mgr-${countBlocks}')">Удалить
                         блок
                     </button>
                 </div>

@@ -299,6 +299,12 @@
                                 <input type="text" class="form-control form-control-lg" placeholder="Введите теги страницы.." id="seo_tags" name="seo_tags" value="">
                                 <span class="text-small text-muted"><b class="text-danger">*</b> Каждый новый тег через запятую.</span>
                             </div>
+                            <div class="form-group">
+                                <label for="seo_tags">URL-Адрес:</label>
+                                <input type="text" class="form-control form-control-lg" placeholder="Введите URL-адрес" id="url" name="url" value="">
+                                <span class="text-small text-muted"><b class="text-danger">*</b> URL идёт в sitemap</span>
+                                <span class="text-small text-muted d-block"><b class="text-danger">*</b> Пример: testovyi-avtomobil</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -309,5 +315,11 @@
             <button type="submit" class="btn btn-primary btn-lg">Добавить услугу</button>
         </div>
     </form>
+
+    <script>
+        function removeMultiGroupBlock(block) {
+            $(block).remove();
+        }
+    </script>
 
 @endsection
