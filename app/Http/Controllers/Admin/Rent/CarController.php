@@ -81,7 +81,8 @@ class CarController extends Controller
             'car_feed' => 'required|numeric',
             'rate_without_driver' => 'required',
             'seo_description' => 'required',
-            'seo_tags' => 'required'
+            'seo_tags' => 'required',
+            'url' => 'required'
         ];
 
         $carData = Car::where('id', $car)->first();
