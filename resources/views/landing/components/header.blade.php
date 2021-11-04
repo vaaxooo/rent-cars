@@ -58,7 +58,7 @@
                     <li><img src="{{ asset('assets/landing/images/head1.webp') }}" class="lazyload" alt=""><a href="tel:+380677085088">+38 (067) 708-50-88</a></li>
                     <li><img src="{{ asset('assets/landing/images/head2.webp') }}" class="lazyload" alt=""><a href="tel:+380737085088">+38 (073) 708-50-88</a></li>
                     <li><img src="{{ asset('assets/landing/images/head3.webp') }}" class="lazyload" alt="">{{ __('Без выходных') }}</li>
-                    <li class="lang">{{ strtoupper(session()->get('locale')) }} <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    <li class="lang">{{ session()->get('locale') ? strtoupper(session()->get('locale')) : "RU" }} <i class="fa fa-angle-down" aria-hidden="true"></i>
                         <ul class="down">
                             <li onclick="location.href='{{ route('language.change', ['locale' => 'en']) }}'">EN</li>
                             <li onclick="location.href='{{ route('language.change', ['locale' => 'ru']) }}'">RU</li>

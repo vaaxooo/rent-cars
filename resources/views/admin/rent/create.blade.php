@@ -211,11 +211,6 @@
                                             <input type="text" class="form-control form-control-lg"
                                                    placeholder="Текст для SEO" id="gallery" name="gallery[0][seo_alt]"/>
                                         </div>
-                                        <div class="form-group">
-                                            <button type="button" class="btn btn-white text-danger btn-sm fw-bold" id="delete_multigroup_gallery">Удалить
-                                                блок
-                                            </button>
-                                        </div>
                                     </div>
 
                                 </div>

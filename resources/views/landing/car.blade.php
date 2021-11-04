@@ -113,7 +113,9 @@
                     <p>{{ __('Прокат без водителя') }}: </p>
                     <ul>
                         @foreach(json_decode($car->rate_without_driver) as $rate)
-                            <li>{{ $rate->days }} {{ __('сутки(ок)') }} - {{ $rate->price }} $</li>
+                            @if($rate->price && $rate->price > 0)
+                                <li>{{ $rate->days }} {{ __('сутки(ок)') }} - {{ $rate->price }} $</li>
+                            @endif
                         @endforeach
                     </ul>
                 </div>
