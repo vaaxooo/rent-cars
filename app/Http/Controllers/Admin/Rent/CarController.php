@@ -82,7 +82,11 @@ class CarController extends Controller
             'rate_without_driver' => 'required',
             'seo_description' => 'required',
             'seo_tags' => 'required',
-            'url' => 'required'
+            'seo_title' => 'required',
+            'url' => 'required',
+            'transfer' => 'numeric',
+            'pledge' => 'numeric',
+            'video_url' => 'max:5000',
         ];
 
         $carData = Car::where('id', $car)->first();
@@ -117,7 +121,7 @@ class CarController extends Controller
 
             if ($carData) {
                 if (json_decode($carData->gallery) != null) {
-                    $request->gallery = array_merge($request->gallery, json_decode($carData->gallery));
+                    $request->gallery = array_merge($request->gallery, json_decode($carData->gallery, true));
                 }
 
 
@@ -175,7 +179,9 @@ class CarController extends Controller
     {
         $image = $request->image;
         $gallery = json_decode($car->gallery);
-        unlink(public_path($image));
+        if(file_exists(public_path($image))) {
+            unlink(public_path($image));
+        }
         unset($gallery[array_search($image, $gallery)]);
         $car->gallery = json_encode($gallery);
         $car->save();

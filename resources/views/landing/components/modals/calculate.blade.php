@@ -19,15 +19,8 @@
                 <div class="clearfix"></div>
             </div>
             <input type="hidden" id="type" name="type" value="calculate" />
-            <div class="form-group">
-                <i class="fa fa-car" aria-hidden="true"></i>
-                <select id="car" name="car" class="form-control" required="" aria-required="true">
-                    <option value="" disabled="">{{ __('Список авто') }}</option>
-                    @foreach($cars as $car)
-                        <option value="{{ $car->brand }}">{{ $car->brand }}</option>
-                    @endforeach
-                </select>
-            </div>
+            <input type="hidden" id="car" name="car" value="{{ $carName }}" />
+
             <div class="row">
                 <div class="form-group col-sm-12">
                     <i class="fa fa-calendar" aria-hidden="true"></i>

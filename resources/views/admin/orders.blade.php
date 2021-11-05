@@ -40,12 +40,15 @@
                                     <i class="material-icons">more_vert</i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right" style="">
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#comments-{{ $order->id }}">Комментарий к заказу</a>
                                     <a class="dropdown-item text-danger" href="{{ route('admin.orders.delete', ['order' => $order->id]) }}">Удалить</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                @include('admin.layouts.components.modals.comments', ['id' => $order->id, 'comment' => $order->comment])
             @endforeach
         @else
             <h5 class="py-5 text-center text-muted">Список заказов и расчётов пуст..</h5>

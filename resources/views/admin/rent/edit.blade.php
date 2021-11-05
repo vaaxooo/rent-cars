@@ -264,6 +264,15 @@
                                         <input type="number" class="form-control form-control-lg" placeholder="Подача авто" id="car_feed" name="car_feed" value="{{ $car->car_feed }}">
                                     </div>
 
+                                    <div class="form-group">
+                                        <label>Трансфер:</label>
+                                        <input type="number" class="form-control form-control-lg" placeholder="Трансфер" id="transfer" name="transfer" value="{{ $car->transfer }}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Залог:</label>
+                                        <input type="number" class="form-control form-control-lg" placeholder="Залог" id="pledge" name="pledge" value="{{ $car->pledge }}">
+                                    </div>
                                     <hr>
 
                                     <div class="form-group">
@@ -320,9 +329,15 @@
                         <div class="card-body">
                             <h5 class="text-muted">SEO</h5>
                             <div class="form-group">
+                                <label for="seo_title">Title:</label>
+                                <input type="text" class="form-control form-control-lg" placeholder="Введите title страницы.." id="seo_title" name="seo_title" value="{{ $car->seo_title }}">
+                                <span class="text-small text-muted">Количество символов <b id="seo_title_symbols">0</b></span>
+                            </div>
+                            <div class="form-group">
                                 <label for="seo_description">Описание (meta description):</label>
                                 <textarea class="form-control form-control-lg"
                                        placeholder="Введите описание страницы.." id="seo_description" name="seo_description">{{ $car->seo_tags }}</textarea>
+                                <span class="text-small text-muted">Количество символов <b id="seo_description_symbols">0</b></span>
                             </div>
                             <div class="form-group">
                                 <label for="seo_tags">Теги (meta tags):</label>

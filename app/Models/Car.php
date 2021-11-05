@@ -42,7 +42,10 @@ class Car extends Model
         'rate_without_driver',
         'seo_description',
         'seo_tags',
+        'seo_title',
         'active',
+        'transfer',
+        'pledge'
     ];
 
     public function category() {

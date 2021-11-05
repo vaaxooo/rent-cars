@@ -1,13 +1,21 @@
 $(document).ready(function () {
 
-      $('#search').change(function(){
-            $('#searchForm').submit();
-      });
+    $('#search').change(function () {
+        $('#searchForm').submit();
+    });
+
+    $('#seo_description').change(function () {
+        $('#seo_description_symbols').html($('#seo_description').val().length);
+    });
+
+    $('#seo_title').change(function () {
+        $('#seo_title_symbols').html($('#seo_title').val().length);
+    });
 
     /*
     * MULTI-INPUTS
     */
-    $("#add_multigroup_gallery").click(function(){
+    $("#add_multigroup_gallery").click(function () {
         let countBlocks = $("#multigroup_rates>div").length;
         $("#multigroup_gallery").append(`
         <div class="form-group border-top" id="mgg-${countBlocks}">
@@ -29,7 +37,7 @@ $(document).ready(function () {
     });
 
 
-    $("#add_multigroup_rates").click(function(){
+    $("#add_multigroup_rates").click(function () {
         let countBlocks = $("#multigroup_rates>div").length;
         $("#multigroup_rates").append(`
             <div class="form-group border-top" id="mgr-${countBlocks}">
@@ -53,19 +61,21 @@ $(document).ready(function () {
     });
 
 
-    $("#delete_multigroup_gallery").click(function(){
+    $("#delete_multigroup_gallery").click(function () {
         $($(this).closest($(this).closest('div'))).remove()
     });
-     /*
-    * MULTI-INPUTS END
-    */
+
+    /*
+   * MULTI-INPUTS END
+   */
+
 
     function removeImage(car_id, image) {
         $.ajax({
             type: "POST",
             url: "/admin/rent/",
             data: formData,
-            cache : false,
+            cache: false,
             processData: false,
             contentType: false,
             success: function (data) {
@@ -90,24 +100,24 @@ $(document).ready(function () {
     }
 
 
-    if(document.querySelector('form')){
+    if (document.querySelector('form')) {
         document.querySelector('form').addEventListener('submit', (e) => {
             e.preventDefault();
             const form = e.target;
             const data = Object.fromEntries(new FormData(e.target).entries());
             let formData = new FormData();
 
-            $.each(data, function(i, val) {
+            $.each(data, function (i, val) {
                 formData.append(i, val);
             });
 
-            if($("select[multiple]")) {
+            if ($("select[multiple]")) {
                 formData.set($("select[multiple]").attr('name'), $("select[multiple]").val());
             }
 
             let checkboxes = $("input[type='checkbox']");
-            if(checkboxes.length > 0) {
-                checkboxes.each(function(index) {
+            if (checkboxes.length > 0) {
+                checkboxes.each(function (index) {
 
                     let checkbox = $(checkboxes[index]);
                     console.log(checkbox.attr('name'), checkbox.prop('checked'))
@@ -119,7 +129,7 @@ $(document).ready(function () {
                 type: $(form).attr('method'),
                 url: $(form).attr('action'),
                 data: formData,
-                cache : false,
+                cache: false,
                 processData: false,
                 contentType: false,
                 success: function (data) {

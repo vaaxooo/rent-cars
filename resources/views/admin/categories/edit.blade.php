@@ -15,6 +15,11 @@
                     <input type="text" class="form-control form-control-lg" id="name" name="name" value="{{ $category->name }}" placeholder="Название категории" />
                 </div>
                 <div class="form-group">
+                    <label for="position">Позиция категории:</label>
+                    <input type="text" class="form-control form-control-lg" id="position" name="position" placeholder="Позиция категории" value="{{ $category->position }}"/>
+                    <span class="text-muted text-small">Категории выводятся по порядку (1.. 2.. 3..)</span>
+                </div>
+                <div class="form-group">
                     <label>URL адрес:</label>
                     <input type="text" class="form-control form-control-lg" disabled value="{{ $category->url }}" placeholder="Название категории" />
                     <span class="text-small"><b class="text-danger">*</b> Ссылка генерируется автоматически!</span>

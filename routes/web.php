@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 
@@ -71,11 +72,15 @@ Route::group(['prefix' => 'admin'], function () {
  */
 
 
-Route::group(['middleware' => ['web']], function () {
 
-    Route::get('/', '\App\Http\Controllers\Landing\AppController@index')->name('landing.index');
-    Route::get('/thanks', '\App\Http\Controllers\Landing\AppController@thanks')->name('landing.thanks');
-    Route::get('/{car_url?}', '\App\Http\Controllers\Landing\AppController@car')->name('landing.car');
+
+Route::group(['prefix' => session()->get('locale')], function () {
+
+    Route::group(['middleware' => ['web']], function () {
+        Route::get('/', '\App\Http\Controllers\Landing\AppController@index')->name('landing.index');
+        Route::get('/thanks', '\App\Http\Controllers\Landing\AppController@thanks')->name('landing.thanks');
+        Route::get('/{car_url?}', '\App\Http\Controllers\Landing\AppController@car')->name('landing.car');
+    });
 
 });
 

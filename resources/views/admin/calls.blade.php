@@ -19,7 +19,10 @@
                             <h6 data-filter-by="text" class="H6-filter-by-text">
                                 {{ $call->name }}
                             </h6>
-                            <span class="text-small">Телефон: <b>{{ $call->phone }}</b></span>
+                            <span class="text-small">Телефон: <b>{{ $call->phone }}</b></span> /
+                            <span class="text-muted text-small">
+                                Добавлено {{ $call->created_at }}
+                            </span>
                         </div>
                         <div class="card-meta">
                             <div class="dropdown card-options">

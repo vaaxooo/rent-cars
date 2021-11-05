@@ -1,5 +1,5 @@
 @extends('landing.layouts.car')
-@section('title', $car->brand)
+@section('title', $car->seo_title)
 @section('description', $car->seo_description)
 @section('keywords', $car->seo_tags)
 
@@ -40,7 +40,12 @@
                                 <div class="bord"></div>
                             @endif
 
-                            <p class="out">{{ __('Трансфер') }}: {{ $car->car_feed }} /{{ __('грн') }}</p>
+                            @if($car->transfer && $car->transfer > 0)
+                                <p class="out">{{ __('Трансфер') }}: {{ $car->transfer }} / {{ __('грн') }}</p>
+                            @endif
+                            @if($car->pledge && $car->pledge > 0)
+                                <p class="out">{{ __('Залог') }}: {{ $car->pledge }} / {{ __('грн') }}</p>
+                            @endif
                             <div class="row">
                                 <div class="but_wrap col-xs-6">
                                     <a class="order" data-fancybox="" data-src="#hidden-order{{ $car->id }}" href="javascript:;">{{ __('арендовать') }}</a>
@@ -110,14 +115,16 @@
                     @if($car->car_with_driver)
                         <p>{{ __('Аренда S-класс с водителем') }}: {{ $car->price_with_driver }} {{ __('грн/час') }}</p>
                     @endif
-                    <p>{{ __('Прокат без водителя') }}: </p>
-                    <ul>
-                        @foreach(json_decode($car->rate_without_driver) as $rate)
-                            @if($rate->price && $rate->price > 0)
-                                <li>{{ $rate->days }} {{ __('сутки(ок)') }} - {{ $rate->price }} $</li>
-                            @endif
-                        @endforeach
-                    </ul>
+                    @if($car->car_without_driver)
+                        <p>{{ __('Прокат без водителя') }}: </p>
+                        <ul>
+                            @foreach(json_decode($car->rate_without_driver) as $rate)
+                                @if($rate->price && $rate->price > 0)
+                                    <li>{{ $rate->days }} {{ __('сутки(ок)') }} - {{ $rate->price }} $</li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    @endif
                 </div>
             @endif
 
@@ -168,7 +175,7 @@
 
     @include('landing.components.modals.call')
     @include('landing.components.modals.order', ['car' => $car])
-    @include('landing.components.modals.calculate', ['cars' => $cars])
+    @include('landing.components.modals.calculate', ['carName' => $car->brand])
 
 
 

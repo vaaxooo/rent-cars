@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('url')->unique();
+            $table->integer('position')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

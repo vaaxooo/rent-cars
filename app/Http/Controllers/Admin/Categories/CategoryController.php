@@ -19,7 +19,8 @@ class CategoryController extends Controller {
         if($request->isMethod('post')) {
             try {
                 $req = Validator::make($request->all(), [
-                    'name' => 'required|string'
+                    'name' => 'required|string',
+                    'position' => 'numeric'
                 ]);
                 if ($req->fails()) {
                     return response()->json([
@@ -48,7 +49,8 @@ class CategoryController extends Controller {
         if($request->isMethod('post')) {
             try {
                 $req = Validator::make($request->all(), [
-                    'name' => 'required|string'
+                    'name' => 'required|string',
+                    'position' => 'numeric'
                 ]);
                 if ($req->fails()) {
                     return response()->json([

@@ -42,9 +42,12 @@ class CreateCarsTable extends Migration
             $table->boolean('enabled_video')->default(false);
             $table->integer('price_with_driver');
             $table->integer('car_feed');
+            $table->integer('pledge')->nullable(true);
+            $table->integer('transfer')->nullable(true);
             $table->json('rate_without_driver');
             $table->binary('seo_description');
             $table->binary('seo_tags');
+            $table->binary('seo_title');
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

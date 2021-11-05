@@ -10,7 +10,12 @@
                 <p class="car_year"><span class="yellow">{{ __('Год') }}:</span> {{ $car->year }}</p>
                 <p class="total_places"><span class="yellow">{{ __('Пассажирских мест') }}:</span> {{ $car->passenger_seats }}</p>
                 <p class="car_price"><span class="yellow">{{ __('С водителем') }}:</span> {{ $car->price_with_driver }} {{ __('грн/час') }}</p>
-                <p class="filling_time">{{ __('Трансфер') }}: {{ $car->car_feed }} {{ __('грн') }}</p>
+                @if($car->transfer && $car->transfer > 0)
+                    <p class="filling_time">{{ __('Трансфер') }}: {{ $car->transfer }} {{ __('грн') }}</p>
+                @endif
+                @if($car->car_without_driver && !empty($car->rate_without_driver))
+                    <p class="filling_time">{{ __('Без водителя') }}: {{ json_decode($car->rate_without_driver, true)[0]['days'] }} {{ __('День (Дней)') }} / {{ json_decode($car->rate_without_driver, true)[0]['price'] }} {{ __('грн') }}</p>
+                @endif
                 <!-- <p class="out">Выезд за Киев- 50 грн/км.</p> -->
                 <div class="but_wrap">
                     <a class="more" href="{{ route('landing.car', ['car_url' => $car->url]) }}">{{ __('подробнее') }}</a>

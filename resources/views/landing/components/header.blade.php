@@ -23,11 +23,11 @@
                             <img class="img-responsive" src="{{ asset('assets/landing/images/logo.webp') }}" alt="">
                         </div>
                         <ul class="menu">
-                            <li class="menu-item"><a href="/#main">{{ __('Главная') }}</a></li>
-                            <li class="menu-item"><a href="/#about">{{ __('О компании') }}</a></li>
-                            <li class="menu-item"><a href="/#gallery">{{ __('Наш автопарк') }}</a></li>
-                            <li class="menu-item"><a href="/#reviews">{{ __('Отзывы клиентов') }}</a></li>
-                            <li class="menu-item"><a href="/#contacts">{{ __('Контакты') }}</a></li>
+                            <li class="menu-item"><a href="/{{ session()->get('locale') == "en" ? "en" : "" }}#main">{{ __('Главная') }}</a></li>
+                            <li class="menu-item"><a href="/{{ session()->get('locale') == "en" ? "en" : "" }}#about">{{ __('О компании') }}</a></li>
+                            <li class="menu-item"><a href="/{{ session()->get('locale') == "en" ? "en" : "" }}#gallery">{{ __('Наш автопарк') }}</a></li>
+                            <li class="menu-item"><a href="/{{ session()->get('locale') == "en" ? "en" : "" }}#reviews">{{ __('Отзывы клиентов') }}</a></li>
+                            <li class="menu-item"><a href="/{{ session()->get('locale') == "en" ? "en" : "" }}#contacts">{{ __('Контакты') }}</a></li>
                         </ul>
                         <div class="shop icon icon-bag"></div>
                     </div>
@@ -67,11 +67,11 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right navmenu navmenus">
                     <!--Элемент с классом active отображает ссылку подсвеченной -->
-                    <li><a class="active" href="/#main">{{ __('Главная') }} <span class="sr-only">(current)</span></a></li>
-                    <li><a href="/#about">{{ __('О компании') }}</a></li>
-                    <li><a href="/#gallery">{{ __('Наш автопарк') }}</a></li>
-                    <li><a href="/#reviews">{{ __('Отзывы клиентов') }}</a></li>
-                    <li><a href="/#contacts">{{ __('Контакты') }}</a></li>
+                    <li><a class="active" href="/{{ session()->get('locale') == "en" ? "en/" : "" }}#main">{{ __('Главная') }} <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/{{ session()->get('locale') == "en" ? "en/" : "" }}#about">{{ __('О компании') }}</a></li>
+                    <li><a href="/{{ session()->get('locale') == "en" ? "en/" : "" }}#gallery">{{ __('Наш автопарк') }}</a></li>
+                    <li><a href="/{{ session()->get('locale') == "en" ? "en/" : "" }}#reviews">{{ __('Отзывы клиентов') }}</a></li>
+                    <li><a href="/{{ session()->get('locale') == "en" ? "en/" : "" }}#contacts">{{ __('Контакты') }}</a></li>
                 </ul>
             </div>
         </div>
